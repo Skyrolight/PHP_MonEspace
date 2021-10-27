@@ -6,45 +6,46 @@
         <title>Se connecter</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     
+        <?php
+            if (isset($_POST['Valider'])) {
+                $erreur = array();
+                $valeur = array();
 
-        <script language="javascript" type="text/javascript">
-            function valider() {
-                if (!(document.forms["formulaire"].pseudo.value))
-                    alert("Pseudo manquant");
-                else if (!(document.forms["formulaire"].mdp.value))
-                    alert("Mot de passe manquant");
-                else if ((document.forms["formulaire"].pseudo.value) && (document.forms["formulaire"].mdp.value)){
-                    verifConnexionCompte();
+                if (!isset($_POST['pseudo']) or strlen(trim($_POST['pseudo'])) == 0) {
+                    $erreur['nom']='Veuillez saisir votre pseudo';
+                    echo '<script>alert("Veuillez saisir votre pseudo"); </script>';
+                } else {
+                    $valeur['pseudo'] = trim($_POST['pseudo']);
                 }
-            }
-
-            function verifConnexionCompte() {
-                <?php 
-                    $requete = $objPdo->prepare("SELECT count(*) FROM `redacteur` WHERE pseudo=? AND motdepasse=?");
-                    $requete->bindValue(1, $_POST['pseudo']);
-                    $requete->bindValue(2, $_POST['mdp']);
+                if (!isset($_POST['mdp']) or strlen(trim($_POST['mdp'])) == 0) {
+                    $erreur['mdp']='Veuillez saisir votre mot de passe';
+                    echo '<script>alert("Veuillez saisir votre mot de passe"); </script>';
+                } else {
+                    $valeur['mdp'] = trim($_POST['mdp']);
+                }
+                
+                if(count($erreur)==0) {
+                    require_once("connexion.php");
+                    session_start();
+                    $requete = $objPdo->prepare("SELECT count(*) FROM redacteur WHERE pseudo=? AND motdepasse=?;");
+                    $requete->bindValue(1, $_POST['pseudo'], PDO::PARAM_STR_CHAR);
+                    $requete->bindValue(2, $_POST['mdp'], PDO::PARAM_STR_CHAR);
                     $requete->execute();
-                    $val = $requete->fetch(PDO::FETCH_ASSOC);
-                    
-                    if($val == 1) {
-                        $pseudo = $_POST['pseudo'];
-                        $_SESSION['pseudo'] = $pseudo;
-                        header('Location : accueil.php?pseudo='.$pseudo);
-                    } else {
-                        header('Location : seconnecter.php?erreur=1');
-                    }
-                ?>
-            }
-        </script>
+                    $reponse = $requete->fetch(PDO::FETCH_ASSOC);
+                    $val = $reponse['count(*)'];
 
+                    var_dump($val);
+                }
+
+            }
+        ?>
 
     </head>
     <body>
         <div id="container">
             <h1>Se connecter</h1>
             <!-- Connection -->
-            <form name="formulaire" action="seconnecter.php" method="post" onsubmit="return valider()">
+            <form name="formulaire" action="seconnecter.php" method="post">
                 <p>Pseudo: <input type="text" size="20" name="pseudo" placeholder="Entrer votre pseudo"></p>
                 <p>Mot de passe: <input type="text" size="20" name="mdp" placeholder="Entrer votre mot de passe"></p>
                 <input type="submit" value="Valider" name="Valider" class="btn">
