@@ -28,16 +28,22 @@
                     require_once("connexion.php");
                     session_start();
                     $requete = $objPdo->prepare("SELECT count(*) FROM redacteur WHERE pseudo=? AND motdepasse=?;");
-                    $requete->bindValue(1, $_POST['pseudo'], PDO::PARAM_STR_CHAR);
-                    $requete->bindValue(2, $_POST['mdp'], PDO::PARAM_STR_CHAR);
+                    $requete->bindValue(1, $_POST['pseudo'], PDO::PARAM_STR);
+                    $requete->bindValue(2, $_POST['mdp'], PDO::PARAM_STR);
                     $requete->execute();
                     $reponse = $requete->fetch(PDO::FETCH_ASSOC);
                     $val = $reponse['count(*)'];
 
-                    var_dump($val);
+                    if ($val!=0) {
+                        $_SESSION['pseudo'] = $valeur['pseudo'];
+                        $_SESSION['login'] = 'ok';
+                        header('Location: accueil.php');
+                    } else {
+                        header('Location: seconnecter?erreur=1.php');
+                    }
                 }
-
             }
+            $objPdo = NULL;
         ?>
 
     </head>
