@@ -7,30 +7,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="accueil.css">
     </head>
-    <body background="#EDE7D2">
-
-    <a href='accueil.php?deconnexion=true'><span>Déconnexion</span></a>
-            
+    <body>
+        
             <!-- tester si l'utilisateur est connecté -->
             <?php
                 session_start();
                 if(isset($_GET['deconnexion'])) { 
-                   if($_GET['deconnexion']==true) {  
+                   if($_GET['deconnexion']=='true') {  
                       $_SESSION[] = array();
                       session_destroy();
-                      header("Location: accueil?deconnexion=1.php");
+                      header("Location: accueil.php?deconneted=true");
                    }
-                } else if(($_SESSION['login']==='ok')) {
-                        $pseudo = $_SESSION['pseudo'];
-                        // afficher un message
-                        echo "<br>Bonjour $pseudo, vous êtes connectés";
-                    } else if (isset($_GET['deconnexion'])) {
-                        if ($_GET['deconnexion'] == 1) {
+                } else if(isset($_SESSION['login'])) {
+                        if (($_SESSION['login']) === 'ok') {
                             $pseudo = $_SESSION['pseudo'];
                             // afficher un message
+                            echo '<a href="accueil.php?deconnexion=true"><span>Déconnexion</span></a>';
                             echo "<br>Bonjour $pseudo, vous êtes connectés";
                         }
-                    }
+                    } else echo '<a href="seconnecter.php">se connecter</a>';
             ?>
     </body>
 </html>

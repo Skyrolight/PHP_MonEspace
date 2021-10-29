@@ -1,9 +1,10 @@
 <?php
-require_once 'connexion_bdd.php';
+require_once 'connexion.php';
 require_once 'inscription.php';
 if (isset($_POST['mail']) && isset($_POST['conf_mail']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) && isset($_POST['mdp']) && isset($_POST['conf_mdp'])) {
     if (!empty($_POST['mail']) && !empty($_POST['conf_mail']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pseudo']) && !empty($_POST['mdp']) && !empty($_POST['conf_mdp'])) {
-        $idredacteur = 'RED' . '4';
+        session_start();
+        
         $mail = trim($_POST['mail']);
         $conf_mail = trim($_POST['conf_mail']);
         $nom = trim($_POST['nom']);
@@ -22,17 +23,18 @@ if (isset($_POST['mail']) && isset($_POST['conf_mail']) && isset($_POST['nom']) 
 
             if ($mdp === $conf_mdp && $mail === $conf_mail) {
 
-                $insert = $objPdo->prepare('INSERT INTO redacteur(idredacteur,nom,prenom,adressemail,motdepasse,pseudo) VALUES(:idredacteur,:nom,:prenom,:adressemail,:motdepasse,:pseudo)');
-                $insert->execute(array(
-                    'idredacteur' => $idredacteur,
-                    'nom' => $nom,
-                    'prenom' => $prenom,
-                    'adressemail' => $mail,
-                    'pseudo' => $pseudo,
-                    'motdepasse' => $mdp,
-                ));
+                $insert = $objPdo->prepare('INSERT INTO redacteur (nom, prenom, adressemail, motdepasse, pseudo) VALUES (?,?,?,?,?);');
+                $insert->bindValue(1, $nom, PDO::PARAM_STR);
+                $insert->bindValue(2, $prenom, PDO::PARAM_STR);
+                $insert->bindValue(3, $mail, PDO::PARAM_STR);
+                $insert->bindValue(4, $mdp, PDO::PARAM_STR);
+                $insert->bindValue(5, $pseudo, PDO::PARAM_STR);
+                $insert->execute();
 
-                header('Location:accueil.php?erreur_inscript=succes' . $pseudo);
+                $_SESSION['pseudo'] = $pseudo;
+                $_SESSION['mdp'] = $mdp;
+
+                header('Location: gestionSeConnecter.php?FromInscri=true');
             } else {
                 header('Location: inscription.php?erreur_inscript=err_conf');
             }
