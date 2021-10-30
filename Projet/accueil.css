@@ -30,6 +30,7 @@ body{
 
 .container{
     margin: auto;
+    max-width: 1200px;
     
 }
 
@@ -42,8 +43,5 @@ body{
     ". . ."
     ". . ."
     ". . ."; 
-    justify-content: center; 
-    align-content: center; 
     justify-items: center; 
-    align-items: center; 
 }
