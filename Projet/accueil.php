@@ -38,26 +38,37 @@
                             $resultat = $requete->fetchColumn();
                             $valeur = $resultat;
         
-                            $tab[] = 0;
+                            $tab[] = 1;
                             for ($i=0; $i < $valeur ; $i++) { 
                                 $tab[$i] = $i++;
                             }
 
                             foreach ($tab as $line) {
-                                $line++;
+                                ++$line;
                                 $requete = $objPdo->prepare("SELECT `titresujet`,`textesujet`,`datesujet` FROM sujet WHERE `idsujet`=(?);");
                                 $requete->bindValue(1, $line, PDO::PARAM_INT);
                                 $requete->execute();
                                 $res = $requete->fetch();
                                 $titre = $res['titresujet'];
+                                $_SESSION['titre'] = $titre;
                                 $texte = $res['textesujet'];
                                 $date = $res['datesujet'];
-                                echo $titre;
-                                echo $texte;
-                                echo $date;
+                            ?>
+                            <div id="Carte" style="cursor: pointer;" onclick="location.href='viewArticle.php?Titre=<?php echo $_SESSION['titre'] ?>';">
+                            <?php
+                                echo '<div id="TitreGrille">
+                                        <p id="Titre">'.$titre.'</p>
+                                    </div>
+                                    <div id="TexteGrille">
+                                        <p id="Titre">'.$texte.'</p>
+                                    </div>
+                                    <div id="DateGrille">
+                                        <p id="Titre">'.$date.'</p>
+                                    </div>
+                                </div>';
                             }
 
-                        ?>
+                            ?>
                         
                     </div>
                 </div>
