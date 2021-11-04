@@ -49,12 +49,12 @@
                             require_once('connexion.php');
 
                             if (isset($_GET['search'])) {
-                                    $title = htmlspecialchars($_GET['search']);
+                                    $search = htmlspecialchars($_GET['search']);
                                     
-                                    $requete = $objPdo->query("SELECT `titresujet`,`textesujet`,`datesujet` FROM sujet WHERE titresujet LIKE '%".$title."%' ;");
+                                    $requete = $objPdo->query("SELECT `titresujet`,`textesujet`,`datesujet` FROM sujet WHERE titresujet LIKE '%".$search."%' ;");
                                     $row = $requete->rowCount();
                                 
-                                    if($row==0) echo "Pas de titre contenant \"".$title."\"";
+                                    if($row==0) echo "Pas de titre contenant \"".$search."\"";
                                 foreach ($requete as $line) {
                                     $titre = $line['titresujet'];
                                     $texte = $line['textesujet'];
