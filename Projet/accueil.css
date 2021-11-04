@@ -1,4 +1,12 @@
+@font-face {
+    font-family: Font-Regular;
+    src: url('Font/Roboto-Regular.ttf');
+    font-family: Font-Bold;
+    src: url('Font/Roboto-Bold.ttf')
+  }
+
 body{
+    font-family: Font-Regular, 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     background-color: #EDE7D2;
 }
@@ -48,7 +56,6 @@ body{
 
 #TitreGrille{
     text-align: center;
-    font-size: 18px;
     font-weight: bold;
     border-bottom: 1px solid #272932;
 }
@@ -63,3 +70,67 @@ body{
     font-size: 11px;
     font-style: italic;
 }
+
+#Carte:hover{
+    background-color: #272932;
+    padding: 5px 0 0 5px;
+}
+
+
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #272932;
+    }
+
+#titreSite {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    color: #f7f7f7;
+    font-size: 18px;
+    font-family: Font-Bold;
+    }
+
+#recherche {
+    display: flex;
+    flex: 0 1 728px;
+    min-width: 0px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    }
+
+#site-search, #site-search::placeholder {
+    margin-right: 7px;
+    width: 300px;
+    padding: 7px 10px;
+    display: inline-block;
+    border: 2px solid #4B4F60;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #131418;
+    color: #f7f7f7;
+}
+
+#btSearch {
+    border: 1px solid var(--ytd-searchbox-legacy-button-border-color);
+background-color: var(--ytd-searchbox-legacy-button-color);
+border-radius: 0 2px 2px 0;
+cursor: pointer;
+height: 40px;
+width: 64px;
+margin: 0;
+}
+
+#connecter, #connecter:visited{
+    min-width: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    color: #f7f7f7;
+    }

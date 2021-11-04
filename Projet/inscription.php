@@ -81,9 +81,9 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+            <input type="submit" class="btn btn-primary btn-block" value="S'inscrire">
+            <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
         </div>
-
     </form>
 
 </body>
