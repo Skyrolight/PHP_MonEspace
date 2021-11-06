@@ -1,12 +1,4 @@
 
-<?php
-    session_start();
-    if(isset($_SESSION['login'])) {
-        $pseudo = $_SESSION['pseudo'];
-    }
-    
- ?> 
-
 <html>
     <head>
         <meta charset="utf-8">
@@ -16,6 +8,7 @@
     
     <body>
             <?php
+            session_start();
                 require_once('connexion.php');
                 
                 if(isset($_GET['deconnexion'])) { 
@@ -26,6 +19,7 @@
                    }
                 } else if(isset($_SESSION['login'])) {
                         if (($_SESSION['login']) === 'ok') {
+                            $pseudo = $_SESSION['pseudo'];
                             
                             // afficher un message
                             echo '<a href="accueil.php?deconnexion=true"><span>Déconnexion</span></a>';
@@ -33,30 +27,38 @@
                             
                         }
                     } else echo '<a href="seconnecter.php">se connecter</a>';
-            ?>
-        <?php 
-            require_once('connexion.php');
 
-            
+                    if (isset($_POST['Submit'])) {
+                        if (!isset($_POST['reponse']) or strlen(trim($_POST['reponse'])) == 0) {
+                            echo '<script>alert("Veuillez saisir une réponse");</script>';
+                        }
+                    }
 
-            $erreur=array();
-            $date = date('Y/m/d', time());
+                    if (isset($_GET['FromCreateArticle'])) {
+                        if (($_GET['FromCreateArticle']) == 'true') {
+                            $title = $_GET['Titre'];
+                        }
+                    }
 
-            $reqredac = 'SELECT idredacteur from redacteur where pseudo = :psd';
-            $selectredac = $objPdo->prepare($reqredac);
-            $selectredac->execute(array('psd'=>$pseudo));
-            foreach($selectredac as $row3){
-                $redacrep = $row3['idredacteur']; 
+            if(isset($_SESSION['login'])) {
+
+                $erreur=array();
+                $date = date('Y/m/d', time());
+
+                $reqredac = 'SELECT idredacteur from redacteur where pseudo = :psd';
+                $selectredac = $objPdo->prepare($reqredac);
+                $selectredac->execute(array('psd'=>$pseudo));
+                foreach($selectredac as $row3){
+                    $redacrep = $row3['idredacteur']; 
+                }
             }
 
-            
             $select ='SELECT * from sujet where titresujet = :titrechoisi';
             $result  = $objPdo->prepare($select);
             $result->execute(array('titrechoisi'=>$_GET['Titre'])); 
             $_SESSION['title'] = $_GET['Titre'];
-
             echo "<article>";
-
+            
             foreach ($result as $row){
                 $title = $_SESSION['title'];
                 $select2 ='SELECT pseudo from redacteur, sujet where redacteur.idredacteur=sujet.idredacteur and sujet.titresujet = :redac';
@@ -127,21 +129,23 @@
             }
 
             echo "</article>";
+            if(isset($_SESSION['login'])) {
+                if ($_SESSION['login'] === 'ok'){
+                    ?>
+                    <article>
+                            <h1>Répondre à cet article</h1>
 
-            if ($_SESSION['login'] === 'ok'){
-                ?>
-                <article>
-                        <h1>Répondre à cet article</h1>
-
-                        <form name='addrep' action='viewArticle.php?Titre=<?php echo $title ?>' method='post'>
-                            <textarea id="reponse" name="reponse" rows="30" cols="40" placeholder="Ecrire ici..."> </textarea> </br>
-                            <input id="submit" name="submit" type="submit"  /> </br>
-                            <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
-                        </form>
-                </article>
-                <?php
+                            <form name='addrep' action='viewArticle.php?Titre=<?php echo $title ?>' method='post'>
+                                <textarea id="reponse" name="reponse" rows="30" cols="40" placeholder="Ecrire ici..."></textarea> </br>
+                                <input id="submit" name="Submit" type="submit"  /> </br>
+                            </form>
+                    </article>
+                    <?php
+                }
             }
-
+            ?>
+            <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
+            <?php
             
         ?>
 

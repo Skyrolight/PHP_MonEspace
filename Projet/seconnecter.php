@@ -17,6 +17,7 @@
                 <input type="submit" value="Valider" name="Valider" class="btn">
                 <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
                 </br> <a href="inscription.php">Je n'ai pas de compte</a>
+            </form>
 
                 <?php
                 if (isset($_GET['erreur'])) {
@@ -26,7 +27,6 @@
                     }
                 }
                 ?>
-            </form>
         </div>
     </body>
 </html>

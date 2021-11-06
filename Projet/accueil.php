@@ -11,11 +11,11 @@
         
         <nav class="navbar">
             <div id="titreSite">
-                <p>Mon Espace</p>
+                <a href="accueil.php">MonEspace</a>
             </div>
             <div id="recherche">
-                <form name="search" action="Rechercher.php" method="post">
-                    <input type="text" id="site-search" name="searchBar" placeholder="Rechercher">
+                <form name="search" action="rechercher.php" method="post">
+                    <input type="text" id="site-search" name="barRecherche" placeholder="Rechercher">
                     <input type="submit" id="btSearch" name="btSearch" value="Rechercher">
                 </form>
             </div>

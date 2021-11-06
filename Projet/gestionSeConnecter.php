@@ -14,12 +14,14 @@
 
         if (!isset($_POST['pseudo']) or strlen(trim($_POST['pseudo'])) == 0) {
             $erreur['nom']='Veuillez saisir votre pseudo';
+            $valeur['pseudo'] = 0;
             echo '<script>alert("Veuillez saisir votre pseudo"); </script>';
         } else {
             $valeur['pseudo'] = trim($_POST['pseudo']);
         }
         if (!isset($_POST['mdp']) or strlen(trim($_POST['mdp'])) == 0) {
             $erreur['mdp']='Veuillez saisir votre mot de passe';
+            $valeur['mdp'] = 0;
             echo '<script>alert("Veuillez saisir votre mot de passe"); </script>';
         } else {
             $valeur['mdp'] = trim($_POST['mdp']);
@@ -48,6 +50,8 @@
             } else {
                 header('Location: seconnecter.php?erreur=1');
             }
+        } else {
+            header('Location: seconnecter.php?erreur=1');
         }
         $objPdo = NULL;
     }            

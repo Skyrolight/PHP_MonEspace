@@ -71,13 +71,6 @@ body{
     font-style: italic;
 }
 
-#Carte:hover{
-    background-color: #272932;
-    padding: 5px 0 0 5px;
-}
-
-
-
 .navbar {
     display: flex;
     flex-direction: row;
