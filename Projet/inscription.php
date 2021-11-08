@@ -2,12 +2,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    
+    <link rel="stylesheet" href="accueil.css">
 
     <title>Inscription</title>
 </head>
 
 <body>
+<nav class="navbar" style="height: 50px;">
+                <div id="titreSite">
+                    <a href="accueil.php">MonEspace</a>
+                </div>
+        </nav>
 
     <?php
     if (isset($_GET['erreur_inscript'])) {
@@ -16,7 +22,7 @@
         switch ($erreur) {
             case 'err_conf':
     ?>
-                <div>
+                <div class="erreur">
                     <strong>Erreur de confirmation</strong> Réessayez !
                 </div>
             <?php
@@ -24,7 +30,7 @@
 
             case 'pseudo_existant':
             ?>
-                <div>
+                <div class="erreur">
                     <strong>Pseudo déja existant</strong> Modifiez votre pseudo !
                 </div>
             <?php
@@ -32,7 +38,7 @@
 
             case 'mq_infos':
             ?>
-                <div>
+                <div class="erreur">
                     <strong>Manque d'informations</strong> Remplissez tous les champs !
                 </div>
             <?php
@@ -40,7 +46,7 @@
 
             case 'champs_vides':
             ?>
-                <div>
+                <div class="erreur">
                     <strong>Champs vides</strong> Remplissez tous les champs !
                 </div>
     <?php
@@ -48,35 +54,35 @@
         }
     }
     ?>
-
+    <div class="containerInsc"> 
     <form action="gestion_inscription.php" method="post">
         <h2 class="text-center">Inscription</h2>
 
-        <div>
+        <div id="ChampsInsc">
             <input type="text" name="mail" placeholder="Email">
         </div>
 
-        <div>
+        <div id="ChampsInsc">
             <input type="text" name="conf_mail" placeholder="Confirmer Email">
         </div>
 
-        <div>
+        <div id="ChampsInsc">
             <input type="text" name="nom" placeholder="Nom">
         </div>
 
-        <div>
+        <div id="ChampsInsc">
             <input type="text" name="prenom" placeholder="Prenom">
         </div>
 
-        <div>
+        <div id="ChampsInsc">
             <input type="text" name="pseudo" placeholder="Pseudo">
         </div>
 
-        <div class="form-group">
+        <div id="ChampsInsc">
             <input type="password" name="mdp" placeholder="Mot de passe">
         </div>
 
-        <div class="form-group">
+        <div id="ChampsInsc">
             <input type="password" name="conf_mdp" placeholder="Confirmer mot de passe">
         </div>
 
@@ -85,6 +91,7 @@
             <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
         </div>
     </form>
+    </div>
 
 </body>
 

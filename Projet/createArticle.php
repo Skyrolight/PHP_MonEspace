@@ -65,7 +65,7 @@
                     $titre = $valeur['titre'];
                     var_dump($titre);
                     echo '<script>alert("Veuillez saisir votre pseudo"); </script>';
-                    header('location: viewArticle.php?FromCreateArticle=true&Titre="'.$titre.'"');
+                    header('location: viewArticle.php?Titre='.$titre.'&FromCreateArticle=true');
                 } else {
                     header('location: createArticle.php?erreur=err_titre');
                 }

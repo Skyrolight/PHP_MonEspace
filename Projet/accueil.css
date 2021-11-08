@@ -18,6 +18,16 @@ body{
         margin: 50px auto;
     }
 
+.erreur{
+    text-align: center;
+    font-size: 50px;
+    margin:10px;
+}
+
+input{
+    line-height: 2em;
+}
+
 .login-form form {
         margin-bottom: 15px;
         background: #f7f7f7;
@@ -42,7 +52,34 @@ body{
     
 }
 
+#containerConnect{
+    text-align: center;
+    
+}
+
+#containerConnect a{
+    color: black;
+   
+}
+
+#containerConnect a:visited{
+    color: black;
+}
+
+.containerInsc{
+    text-align:center ;
+    
+}
+
+#ChampsInsc{
+    margin: 4px;
+    
+}
+
 .grille{
+    max-width: 1200px;
+    min-width: 600px;
+    padding-top: 10px;
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr; 
     grid-template-rows: 1fr 1fr 1fr; 
@@ -51,7 +88,11 @@ body{
     ". . ."
     ". . ."
     ". . ."; 
-    justify-items: center; 
+    justify-items: center;
+}
+
+#Card{
+    padding: 5px;
 }
 
 #TitreGrille{
@@ -87,7 +128,13 @@ body{
     color: #f7f7f7;
     font-size: 18px;
     font-family: Font-Bold;
+    text-decoration: none;
     }
+
+#titreSite a:visited{
+    color: #f7f7f7;
+    text-decoration: none;
+}
 
 #recherche {
     display: flex;
@@ -103,21 +150,23 @@ body{
     width: 300px;
     padding: 7px 10px;
     display: inline-block;
-    border: 2px solid #4B4F60;
-    border-radius: 4px;
+    border: 1px solid #4B4F60;
     box-sizing: border-box;
     background-color: #131418;
     color: #f7f7f7;
+    margin: 5px 0px;
+    height: 40px;
 }
 
 #btSearch {
     border: 1px solid var(--ytd-searchbox-legacy-button-border-color);
-background-color: var(--ytd-searchbox-legacy-button-color);
-border-radius: 0 2px 2px 0;
-cursor: pointer;
-height: 40px;
-width: 64px;
-margin: 0;
+    background-color: var(--ytd-searchbox-legacy-button-color);
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    height: 40px;
+    width: 75px;
+    margin: 0;
+    color:#f7f7f7
 }
 
 #connecter, #connecter:visited{
@@ -127,3 +176,11 @@ margin: 0;
     justify-content: flex-end;
     color: #f7f7f7;
     }
+
+#connecter a:visited{
+    min-width: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    color: #f7f7f7;
+}

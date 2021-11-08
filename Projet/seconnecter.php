@@ -5,10 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Se connecter</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="accueil.css">
 
     </head>
     <body>
-        <div id="container">
+        <nav class="navbar" style="height: 50px;">
+                <div id="titreSite">
+                    <a href="accueil.php">MonEspace</a>
+                </div>
+        </nav>
+
+        <div id="containerConnect">
             <h1>Se connecter</h1>
             <!-- Connection -->
             <form name="formulaire" action="gestionSeConnecter.php" method="post">
