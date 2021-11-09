@@ -85,7 +85,7 @@
             . "Ecrit par : " . $nomredac . "</br>"
             . "le " . $row['datesujet'] . "</br>";
 
-        $result2 = $objPdo->query('SELECT * FROM reponse WHERE idsujet = ' . $row['idsujet']);
+        $result2 = $objPdo->query('SELECT * FROM reponse WHERE idsujet = ' . $row['idsujet'].' ORDER BY daterep DESC' );
         foreach ($result2 as $row2) {
 
             $result3 = $objPdo->query('SELECT * FROM redacteur WHERE idredacteur = ' . $row2['idredacteur']);
@@ -99,8 +99,26 @@
                 . "</p>";
         }
     }
-
     echo "</article>";
+
+    if (!isset($_POST['reponse']) or strlen(trim($_POST['reponse']))==0){
+        $erreur['reponse'] = 'saisie obligatoire du texte de la réponse';
+    }
+    if (count($erreur)==0){ //Il n'y a pas d'erreur : on peut insérer dans la BDD
+        
+
+        $req2 = 'INSERT INTO reponse (idreponse, idsujet, idredacteur, daterep, textereponse) VALUES(:idrep,:idsuj,:idredac,:daterep,:texte)';
+        $insert2 = $objPdo->prepare($req2);
+       
+        $insert2->execute(array('idrep'=>0,
+                            'idsuj'=>$row['idsujet'],
+                            'idredac'=>$redacrep,
+                            'daterep'=>$date, 
+                            'texte'=>$_POST['reponse']));
+        header("location.href='viewArticle.php?Titre=<?php echo $title ?>';");
+    }
+
+
     if (isset($_SESSION['login'])) {
         if ($_SESSION['login'] === 'ok') {
             ?>
@@ -115,6 +133,7 @@
     <?php
         }
     }
+
     ?>
     <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
     <?php
