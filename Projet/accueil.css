@@ -8,10 +8,12 @@
 body{
     font-family: Font-Regular, 'Arial Narrow', Arial, sans-serif;
     margin: 0;
-    background-color: #EDE7D2;
+    background-color: #EDEFED;
 }
 .text-center{
-    text-align: center;
+    letter-spacing: .6px;
+    color: #181B21;
+    padding-left: 2em;
 }
 .login-form {
         width: 340px;
@@ -20,7 +22,6 @@ body{
 
 .erreur{
     text-align: center;
-    font-size: 50px;
     margin:10px;
 }
 
@@ -67,14 +68,83 @@ input{
 }
 
 .containerInsc{
-    text-align:center ;
-    
+    display: block;
+    max-width: 530px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
 }
 
-#ChampsInsc{
-    margin: 4px;
-    
+.colonneText{
+    max-width: 332px;
+    margin: 0 auto 0 auto;
+    padding: var(--tds-size--2x) 0;
+    text-align: center;
 }
+
+.formInscription{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.ChampsMail{
+    --tds-form-item--indent: 20px;
+    --tds-from-item--grid-template-areas: "label" "caption" "input" "feedback";
+    display: grid;
+    grid-template-areas: var(--tds-from-item--grid-template-areas);
+    inline-size: 100%;
+    position: relative;
+}
+
+.ChampsMailText{
+    display: flex;
+    grid-area: label;
+    text-align: start;
+}
+
+.ChampsMailLabelText{
+    grid-area: label-text;
+    display: inline-block;
+    transition: color .33s ease;
+    padding: 20px 0px 7px 0px;
+    color: #595B5F;
+    font-weight: bold;
+}
+
+#inputChamps {
+    padding-inline-start: var(--tds-form-item--indent);
+    border-radius: 45px;
+    height: 40px;
+    background-color: #D3D8D3;
+    border: none;
+}
+
+
+#ChampsInsc{
+    display: grid;
+}
+
+.form-group{
+    margin-top: 2em;
+}
+
+#btnInsc{
+    transition: all 0.5s ease;
+    margin: 5px 0 5px 0;
+    padding-inline-start: var(--tds-form-item--indent);
+    border-radius: 45px;
+    height: 40px;
+    width: 100%;
+    background-color: #D3D8D3;
+    color: #595B5F;
+    cursor: pointer;
+    border: 3px solid #F19324;
+}
+
+#btnInsc:hover{
+    background-color: #F19324;
+    color: #D3D8D3;
+}
+
 
 .grille{
     max-width: 1200px;

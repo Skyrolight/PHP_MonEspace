@@ -55,42 +55,80 @@
     }
     ?>
     <div class="containerInsc"> 
-    <form action="gestion_inscription.php" method="post">
-        <h2 class="text-center">Inscription</h2>
+        <h1 class="text-center">Inscription</h2>
+        <div class="colonneText">
+            <form id="formInscription" action="gestion_inscription.php" method="post">
+                
+                <div class="ChampsMail">
+                    <div class="ChampsMailText">
+                        <label class="ChampsMailLabelText" style="padding: 0px 0px 7px 0px;">E-mail</label>
+                    </div>
+                    <div id="ChampsInsc">
+                        <input id="inputChamps" type="text" name="mail" placeholder="Email">
+                    </div>
+                </div>
 
-        <div id="ChampsInsc">
-            <input type="text" name="mail" placeholder="Email">
-        </div>
+                <div class="ChampsMail">
+                    <div class="ChampsMailText">
+                        <label class="ChampsMailLabelText">Confirmer votre E-mail</label>
+                    </div>
+                    <div id="ChampsInsc">
+                        <input id="inputChamps" type="text" name="conf_mail" placeholder="Confirmer Email">
+                    </div>
+                </div>
 
-        <div id="ChampsInsc">
-            <input type="text" name="conf_mail" placeholder="Confirmer Email">
-        </div>
+                <div class="ChampsMail">
+                    <div class="ChampsMailText">
+                        <label class="ChampsMailLabelText">Nom</label>
+                    </div>
+                    <div id="ChampsInsc">
+                        <input id="inputChamps" type="text" name="nom" placeholder="Nom">
+                    </div>
+                </div>
 
-        <div id="ChampsInsc">
-            <input type="text" name="nom" placeholder="Nom">
-        </div>
+                <div class="ChampsMail">
+                    <div class="ChampsMailText">
+                        <label class="ChampsMailLabelText">Confirmer votre nom</label>
+                    </div>
+                    <div id="ChampsInsc">
+                        <input id="inputChamps" type="text" name="prenom" placeholder="Prenom">
+                    </div>
+                </div>
 
-        <div id="ChampsInsc">
-            <input type="text" name="prenom" placeholder="Prenom">
-        </div>
 
-        <div id="ChampsInsc">
-            <input type="text" name="pseudo" placeholder="Pseudo">
-        </div>
+                <div class="ChampsMail">
+                    <div class="ChampsMailText">
+                        <label class="ChampsMailLabelText">Pseudo</label>
+                    </div>
+                    <div id="ChampsInsc">
+                        <input id="inputChamps" type="text" name="pseudo" placeholder="Pseudo">
+                    </div>
+                </div>
 
-        <div id="ChampsInsc">
-            <input type="password" name="mdp" placeholder="Mot de passe">
-        </div>
+                <div class="ChampsMail">
+                    <div class="ChampsMailText">
+                            <label class="ChampsMailLabelText">Mot de passe</label>
+                    </div>
+                    <div id="ChampsInsc">
+                        <input id="inputChamps" type="password" name="mdp" placeholder="Mot de passe">
+                    </div>
+                </div>
 
-        <div id="ChampsInsc">
-            <input type="password" name="conf_mdp" placeholder="Confirmer mot de passe">
-        </div>
+                <div class="ChampsMail">
+                    <div class="ChampsMailText">
+                                <label class="ChampsMailLabelText">Confirmer votre mot de passe</label>
+                    </div>
+                    <div id="ChampsInsc">
+                        <input id="inputChamps" type="password" name="conf_mdp" placeholder="Confirmer mot de passe">
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary btn-block" value="S'inscrire">
-            <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
+                <div class="form-group">
+                    <input type="submit" id="btnInsc" class="btnAddInsc" value="S'inscrire">
+                    <input type="button" value="Retour" id="btnInsc" class="btnRetourInsc" onclick="location.href='accueil.php'">
+                </div>
+            </form>
         </div>
-    </form>
     </div>
 
 </body>
