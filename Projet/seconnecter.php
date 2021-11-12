@@ -15,25 +15,42 @@
                 </div>
         </nav>
 
-        <div id="containerConnect">
-            <h1>Se connecter</h1>
-            <!-- Connection -->
-            <form name="formulaire" action="gestionSeConnecter.php" method="post">
-                <p>Pseudo: <input type="text" size="20" name="pseudo" placeholder="Entrer votre pseudo"></p>
-                <p>Mot de passe: <input type="password" size="20" name="mdp" placeholder="Entrer votre mot de passe"></p>
-                <input type="submit" value="Valider" name="Valider" class="btn">
-                <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
-                </br> <a href="inscription.php">Je n'ai pas de compte</a>
-            </form>
+        <div class="containerInsc">
+            <h1 class="text-center">Se connecter</h2>
+            <div class="colonneText">
+                <!-- Connection -->
+                <form id="formSeconnecter" name="formulaire" action="gestionSeConnecter.php" method="post">
+                    <div class="ChampsMail">
+                        <div class="ChampsMailText">
+                            <label class="ChampsMailLabelText" style="padding: 0px 0px 7px 0px;">Pseudo</label>
+                        </div>
+                        <div id="ChampsInsc">
+                            <input id="inputChamps" type="text" size="20" name="pseudo" placeholder="Entrer votre pseudo">
+                        </div>
+                    </div>
+                    <div class="ChampsMail">
+                        <div class="ChampsMailText">
+                            <label class="ChampsMailLabelText" style="padding: 0px 0px 7px 0px;">Mot de passe</label>
+                        </div>
+                        <div id="ChampsInsc">
+                            <input id="inputChamps" type="password" size="20" name="mdp" placeholder="Entrer votre mot de passe">
+                        </div>
+                    </div>
 
-                <?php
-                if (isset($_GET['erreur'])) {
-                    $erreur = $_GET['erreur'];
-                    if ($erreur == 1) {
-                        echo "<p style='color:red'>Pseudo ou mot de passe incorrect</p>";
+                    <input type="submit" value="Valider" name="Valider" class="btn">
+                    <input type="button" value="Retour" class="btn" onclick="location.href='accueil.php'">
+                    </br> <a href="inscription.php">Je n'ai pas de compte</a>
+                </form>
+
+                    <?php
+                    if (isset($_GET['erreur'])) {
+                        $erreur = $_GET['erreur'];
+                        if ($erreur == 1) {
+                            echo "<p style='color:red'>Pseudo ou mot de passe incorrect</p>";
+                        }
                     }
-                }
-                ?>
+                    ?>
+            </div>
         </div>
     </body>
 </html>

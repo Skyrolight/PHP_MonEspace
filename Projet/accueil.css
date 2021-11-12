@@ -86,6 +86,11 @@ input{
     scroll-behavior: smooth;
 }
 
+#formSeconnecter{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
 .ChampsMail{
     --tds-form-item--indent: 20px;
     --tds-from-item--grid-template-areas: "label" "caption" "input" "feedback";
