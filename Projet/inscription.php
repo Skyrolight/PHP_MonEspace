@@ -61,7 +61,7 @@
                 
                 <div class="ChampsMail">
                     <div class="ChampsMailText">
-                        <label class="ChampsMailLabelText" style="padding: 0px 0px 7px 0px;">E-mail</label>
+                        <label class="ChampsMailLabelText" style="padding: 0px 0px 7px 20px;">E-mail</label>
                     </div>
                     <div id="ChampsInsc">
                         <input id="inputChamps" type="text" name="mail" placeholder="Email">
@@ -124,8 +124,8 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" id="btnInsc" class="btnAddInsc" value="S'inscrire">
-                    <input type="button" value="Retour" id="btnInsc" class="btnRetourInsc" onclick="location.href='accueil.php'">
+                    <input type="submit" id="btnInsc" value="S'inscrire">
+                    <input type="button" value="Retour" id="btnRetour" onclick="location.href='accueil.php'">
                 </div>
             </form>
         </div>

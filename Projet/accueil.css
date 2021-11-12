@@ -40,13 +40,6 @@ input{
     margin: 0 0 15px;
     }
 
-.btn {
-        min-height: 38px;
-        border-radius: 2px;
-        font-size: 15px;
-        font-weight: bold;
-    }
-
 .container{
     margin: auto;
     max-width: 1200px;
@@ -86,7 +79,7 @@ input{
     scroll-behavior: smooth;
 }
 
-#formSeconnecter{
+#form{
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
@@ -110,7 +103,7 @@ input{
     grid-area: label-text;
     display: inline-block;
     transition: color .33s ease;
-    padding: 20px 0px 7px 0px;
+    padding: 20px 0px 7px 20px;
     color: #595B5F;
     font-weight: bold;
 }
@@ -132,6 +125,22 @@ input{
     margin-top: 2em;
 }
 
+.line{
+    margin: 20px 0 10px 0;;
+    border: 1px solid #D3D8D3;
+    width: 80%;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
+}
+
+.forgotmdp{
+    color: #181B21;
+}
+
+.forgotmdp:visited{
+    color: #181B21;
+}
+
 #btnInsc{
     transition: all 0.5s ease;
     margin: 5px 0 5px 0;
@@ -139,14 +148,50 @@ input{
     border-radius: 45px;
     height: 40px;
     width: 100%;
-    background-color: #D3D8D3;
-    color: #595B5F;
+    background-color: #F19324;
+    color: #D3D8D3;
     cursor: pointer;
     border: 3px solid #F19324;
 }
 
 #btnInsc:hover{
-    background-color: #F19324;
+    background-color: #DC7C0E;
+    border: 3px solid #DC7C0E;
+}
+
+#btnRetour{
+    transition: all 0.5s ease;
+    margin: 5px 0 5px 0;
+    padding-inline-start: var(--tds-form-item--indent);
+    border-radius: 45px;
+    height: 40px;
+    width: 100%;
+    background-color: #D3D8D3;
+    color: #747880;
+    cursor: pointer;
+    border: 3px solid #181B21;
+}
+
+#btnRetour:hover{
+    background-color: #181B21;
+    color: #D3D8D3;
+}
+
+#btnCreateCompte{
+    transition: all 0.5s ease;
+    margin: 5px 0 5px 0;
+    padding-inline-start: var(--tds-form-item--indent);
+    border-radius: 45px;
+    height: 40px;
+    width: 100%;
+    background-color: #D3D8D3;
+    color: #747880;
+    cursor: pointer;
+    border: 3px solid #4D89C1;
+}
+
+#btnCreateCompte:hover{
+    background-color: #4D89C1;
     color: #D3D8D3;
 }
 
@@ -258,4 +303,9 @@ input{
     display: flex;
     justify-content: flex-end;
     color: #f7f7f7;
+}
+
+::placeholder{
+    color: #181B21;
+    opacity: 1;
 }
