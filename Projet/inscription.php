@@ -5,13 +5,13 @@
     
     <link rel="stylesheet" href="accueil.css">
 
-    <title>Inscription</title>
+    <title>Inscription - MonEspace</title>
 </head>
 
 <body>
 <nav class="navbar" style="height: 50px;">
                 <div id="titreSite">
-                    <a href="accueil.php">MonEspace</a>
+                    <a href="accueil.php" style="text-decoration: none;">MonEspace</a>
                 </div>
         </nav>
 

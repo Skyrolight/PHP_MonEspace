@@ -3,15 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>accueil</title>
+        <title>MonEspace</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="accueil.css">
     </head>
-    <body>
+    <body style="min-width: 1250px;">
         
-        <nav class="navbar">
+        <nav class="navbar" style="position: sticky;top: 0;">
             <div id="titreSite">
-                <a href="accueil.php">MonEspace</a>
+                <a href="accueil.php" style="text-decoration: none;">MonEspace</a>
             </div>
             <div id="recherche">
                 <form name="search" action="rechercher.php" method="post">
@@ -31,17 +31,26 @@
                     } else if(isset($_SESSION['login'])) {
                             if (($_SESSION['login']) === 'ok') {
                                 $pseudo = $_SESSION['pseudo'];
-                                // afficher un message
-                                echo '<a href="accueil.php?deconnexion=true"><span>Déconnexion</span></a>';
-                                echo "<br>Bonjour $pseudo, vous êtes connectés";
-                                echo '<a href="createArticle"><span>Créer un article</span></a>';
+                                ?>
+                                <div id="blockConnecter">
+                                    <p class="deconnexionP">
+                                        <a href="accueil.php?deconnexion=true" class="deconnexionText">Déconnexion</a>
+                                    </p>
+                                    <?php
+                                        echo '<p class="bonjourConnexion">Bonjour '. $pseudo .', vous êtes connecté</p>';
+                                    ?>
+                                </div>
+                                <div id="createArticle">
+                                    <a href="createArticle" class="createArticleLien">Créer un article</a>
+                                </div>
+                                <?php
                             }
-                        } else echo '<a href="seconnecter.php">se connecter</a>';
+                        } else echo '<a href="seconnecter.php" class="createArticleLien">se connecter</a>';
                 ?>
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container"> 
             <div class="page">
                 <div class="sujet">
                     <div class="grille">
@@ -64,13 +73,13 @@
                                 <div id="Carte" style="cursor: pointer;" onclick="location.href='viewArticle.php?Titre=<?php echo $titre ?>';">
                                 <?php
                                     echo '<div id="TitreGrille">
-                                            <p id="Titre">'.$titre.'</p>
+                                            <p id="titreText">'.$titre.'</p>
                                         </div>
                                         <div id="TexteGrille">
-                                            <p id="Titre">'.$texte.'</p>
+                                            <p id="parText">'.$texte.'</p>
                                         </div>
                                         <div id="DateGrille">
-                                            <p id="Titre">'.$date.'</p>
+                                            <p id="dateText">'.$date.'</p>
                                         </div>
                                     </div>';
                                 }  
@@ -87,13 +96,13 @@
                                 <div id="Carte" style="cursor: pointer;" onclick="location.href='viewArticle.php?Titre=<?php echo $titre ?>';">
                                 <?php
                                     echo '<div id="TitreGrille">
-                                            <p id="Titre">'.$titre.'</p>
+                                            <p id="titreText">'.$titre.'</p>
                                         </div>
                                         <div id="TexteGrille">
-                                            <p id="Titre">'.$texte.'</p>
+                                            <p id="parText">'.$texte.'</p>
                                         </div>
                                         <div id="DateGrille">
-                                            <p id="Titre">'.$date.'</p>
+                                            <p id="dateText">'.$date.'</p>
                                         </div>
                                     </div>';
                                 }

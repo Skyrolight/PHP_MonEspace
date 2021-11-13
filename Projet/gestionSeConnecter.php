@@ -46,13 +46,29 @@
             if ($val!=0) {
                 $_SESSION['pseudo'] = $pseudo;
                 $_SESSION['login'] = 'ok';
-                header('Location: accueil.php');
-            } else {
-                header('Location: seconnecter.php?erreur=1');
+                if (isset($_GET['FromArticle'])) {
+                    if ( ($_GET['FromArticle']) == 'true') {
+                        $titre = $_GET['Titre'];
+                        header('Location: viewArticle.php?Titre='. $titre);
+                    } else 
+                        header('Location: accueil.php');
+                } else 
+                    header('Location: accueil.php');
+            } else if (isset($_GET['FromArticle'])) {
+                if ( ($_GET['FromArticle']) == 'true') {
+                    $titre = $_GET['Titre'];
+                    header('Location: seconnecter.php?Titre='.$titre.'&FromArticle=true&erreur=1');
+                    } else 
+                    header('Location: seconnecter.php?&erreur=1');
+            } else
+                header('Location: seconnecter.php?erreur=1');  
+        } else if (isset($_GET['FromArticle'])) {
+            if ( ($_GET['FromArticle']) == 'true') {
+                $titre = $_GET['Titre'];
+                header('Location: seconnecter.php?Titre='.$titre.'&FromArticle=true&erreur=1');
+                } else 
+                header('Location: seconnecter.php?&erreur=1');
             }
-        } else {
-            header('Location: seconnecter.php?erreur=1');
-        }
-        $objPdo = NULL;
+    $objPdo = NULL;
     }            
 ?>

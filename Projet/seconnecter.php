@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Se connecter</title>
+        <title>Se connecter - MonEspace</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="accueil.css">
 
@@ -11,14 +11,29 @@
     <body>
         <nav class="navbar" style="height: 50px;">
                 <div id="titreSite">
-                    <a href="accueil.php">MonEspace</a>
+                    <a href="accueil.php" style="text-decoration: none;">MonEspace</a>
                 </div>
         </nav>
+
+        <?php
+            require_once('connexion.php');
+            if (isset($_GET['FromArticle'])) {
+                if ( ($_GET['FromArticle']) == 'true') {
+                    session_start();
+                    $article = $_GET['FromArticle'];
+                    $titre = $_GET['Titre'];
+                    session_destroy();
+                }
+            } else {
+                $article = "";
+                $titre = "";
+            }
+        ?>
 
         <div class="containerInsc">
             <h1 class="text-center">Se connecter</h1>
             <div class="colonneText">
-                <form id="form" name="formulaire" action="gestionSeConnecter.php" method="post">
+                <form id="form" name="formulaire" action="gestionSeConnecter.php?Titre=<?php echo $titre ?>&FromArticle=<?php echo $article ?>" method="post">
                     <div class="ChampsMail">
                         <div class="ChampsMailText">
                             <label class="ChampsMailLabelText" style="padding: 0px 0px 7px 20px;">Pseudo</label>
